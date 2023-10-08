@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Save the Waves </title>
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Fontawesome CSS -->
+
+	<!-- Custom styles for this template -->
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/style3.css" rel="stylesheet">
+</head>
+<body>
+	<style>
+        /* ... (your existing styles) ... */
+
+        /* Center the "Endangered Animals" heading */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin: 0;
+            margin-top: 20px;
+        }
+	</style>
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="fas fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="leaderbord.html">leaderbord</a>
+                  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="extend your culture.html">extend your culture</a>
+				 </li>
+               </ul>
+            </div>
+        </div>
+    </nav>
+	
+
+	 
+    <h1>Endangered Animals</h1>
+
+    <label for="regionSelect">Select a Region:</label>
+    <select id="regionSelect">
+		<option value="Alaska">Alaska</option>
+		<option value="New England/Mid-Atlantic Southeast" selected>New England/Mid-Atlantic Southeast</option>
+		<option value="Pacific Islands">Pacific Islands</option>
+		<option value="Foreign">Foreign</option>
+	</select>
+	
+
+    <h2>Animals in the Selected Region:</h2>
+    <div id="animalList">
+    </div>
+
+	<script>
+        const animalData = {
+            "Alaska": [
+                {
+                    name: "Eulachon",
+					url: "https://www.fisheries.noaa.gov/species/eulachon",
+                    image: "eulachon.png", 
+                    description: "The Eulachon, also known as the 'candlefish,'' is a small, oily fish found in North American waters, particularly in the Pacific Northwest, valued for its high oil content and traditional use in making candles by indigenous peoples.",
+                },
+                {
+                    name: "Green Sturgeon",
+					url: "https://www.fisheries.noaa.gov/species/green-sturgeon",
+                    image: "green-sturgeon.png",
+                    description: "The Green Sturgeon is a large and ancient sturgeon species native to the North American Pacific Coast, characterized by its long snout and greenish hue, and is known for its threatened status and commercial importance.",
+                },
+                {
+                    name: "Steelhead Trout",
+					url: "https://www.fisheries.noaa.gov/species/steelhead-trout",
+                    image: "640x427-steelhead-trout.png",
+                    description: "The Steelhead Trout is a migratory form of rainbow trout known for its distinctive silvery appearance, exceptional sport-fishing qualities, and habitat range along the Pacific coast of North America.",
+                },
+            ],
+            
+			"New England/Mid-Atlantic Southeast": [
+            {
+                    name: "Shortnose Sturgeon",
+					url: "https://www.fisheries.noaa.gov/species/shortnose-sturgeon",
+                    image: "640x427-shortnose-sturgeon.png",                //tajem tzid 7ayawanet w tsawer lina
+                    description: "The Shortnose Sturgeon is a small and ancient sturgeon species native to North American rivers, recognized by its distinctive short snout, and is listed as an endangered species due to habitat loss and overfishing.",
+                },
+                {
+                    name: "Atlantic Salmon",
+					url: "https://www.fisheries.noaa.gov/species/atlantic-salmon-protected",
+                    image: "640x427-Salmon-Atlantic-NOAAFisheries.png",
+                    description: "The Atlantic Salmon is a iconic fish species known for its silver-colored body and remarkable journeys between freshwater rivers and the open Atlantic Ocean for spawning, valued for both its ecological importance and commercial significance.",
+                },
+                {
+                    name: "Killer Whale",
+					url: "https://www.fisheries.noaa.gov/species/killer-whale",
+                    image: "640x427-killer-whale.png",
+                    description: "The Killer Whale, also known as the Orca, is a magnificent and highly intelligent marine mammal, known for its distinctive black and white coloration, social behavior, and status as an apex predator in the ocean's food chain.",
+                },
+            ],
+            "Pacific Islands": [
+                {
+                    name:"Giant Manta Ray",
+					url: "https://www.fisheries.noaa.gov/species/giant-manta-ray",
+                    image:"giant-manta-ray.jpg",
+                    description:"The Giant Manta Ray is a magnificent and enormous oceanic ray species, recognized for its impressive size, wing-like fins, and graceful presence in the world's oceans.",
+                },
+				{
+                    name: "Oceanic Whitetip Shark",
+					url: "https://www.fisheries.noaa.gov/species/oceanic-whitetip-shark",
+                    image: "oceanic-whitetip-shark.png", 
+                    description: "The Oceanic Whitetip Shark is a powerful and widespread shark species, easily recognizable by its white-tipped dorsal fin, often found in deep blue waters and known for its hunting prowess.",
+                },
+				{
+                    name: "Scalloped Hammerhead Shark",
+					url: "https://www.fisheries.noaa.gov/species/scalloped-hammerhead-shark",
+                    image: "scalloped-hammerhead.png", 
+                    description: "The Scalloped Hammerhead Shark is a distinctive shark species recognized by its unique hammer-shaped head with scalloped edges and is often found in warm coastal waters, known for its schooling behavior.",
+                },
+                //tajem tzid 7ayawanet w tsawer lina
+                        ],
+           "Foreign": [
+            {
+                name:"Adriatic Sturgeon",
+				url: "https://www.fisheries.noaa.gov/species/adriatic-sturgeon",
+                image:"adriatic-sturgeon.png",
+                description:"The Adriatic Sturgeon is a critically endangered fish species in the Adriatic Sea, prized for its caviar."
+			},
+			{
+				name: "African Coelacanth",
+				url: "https://www.fisheries.noaa.gov/species/african-coelacanth",
+				image: "african-coelacanth.png", 
+				description: "The African Coelacanth is a prehistoric fish species known for its unique lobed fins and its status as a 'living fossil' that has survived for millions of years.",
+			},
+            {
+				name: "Banggai Cardinalfish",
+				url: "https://www.fisheries.noaa.gov/species/banggai-cardinalfish",
+				image: "banggai-cardinalfish.jpg", 
+				description: "The Banggai Cardinalfish is a small and strikingly beautiful saltwater fish species native to the Banggai Islands in Indonesia, known for its unique black and white coloration and popularity in the aquarium trade.",
+			},
+           ]
+        };
+
+        function updateAnimalList() {
+			const selectedRegion = document.getElementById("regionSelect").value;
+			const animalList = document.getElementById("animalList");
+			animalList.innerHTML = "";
+		
+			animalData[selectedRegion].forEach(animal => {
+				const animalCard = document.createElement("div");
+				animalCard.className = "animal-card";
+		
+				// Access the URL from the animalData object
+				const pageUrl = animal.url;
+		
+				const animalImage = document.createElement("img");
+				animalImage.src = animal.image;
+				animalImage.alt = animal.name;
+		
+				const animalName = document.createElement("h3");
+				animalName.textContent = animal.name;
+		
+				const animalDescription = document.createElement("p");
+				animalDescription.textContent = animal.description;
+		
+				// Add a click event listener to the animal card
+				animalCard.addEventListener("click", function() {
+					// Navigate to the URL from the animalData object
+					window.location.href = pageUrl;
+				});
+		
+				animalCard.appendChild(animalImage);
+				animalCard.appendChild(animalName);
+				animalCard.appendChild(animalDescription);
+		
+				animalList.appendChild(animalCard);
+			});
+		}
+		
+		
+
+
+
+		
+        document.getElementById("regionSelect").addEventListener("change", updateAnimalList);
+        updateAnimalList();
+		document.addEventListener("DOMContentLoaded", function() {
+			updateAnimalList();
+		});
+		
+    </script>
+
+    
+
+ 
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
